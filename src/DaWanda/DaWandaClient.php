@@ -1,0 +1,72 @@
+<?php
+/**
+ * DaWandaClient.php
+ *
+ * @author   Thomas Ploch <tp@responsive-code.de>
+ * @since    06.12.12 21:40
+ * @licenese MIT
+ *
+ * @filesource
+ *
+ */
+namespace Guzzle\Dawanda;
+
+use Guzzle\Common\Event;
+use Guzzle\Common\Collection;
+use Guzzle\Service\Client;
+use Guzzle\Common\Exception\InvalidArgumentException;
+use Guzzle\Http\Message\Request;
+
+use Guzzle\DaWanda\Plugin\DaWandaPlugin;
+
+/**
+ * The DaWanda API Client
+ *
+ * @package    Guzzle
+ * @subpackage DaWanda
+ */
+class DaWandaClient extends Client
+{
+    /**
+     * Factory method to create a new DaWandaClient
+     *
+     * The following array keys and values are available options:
+     * - base_url: Base URL of web service
+     * - scheme:   URI scheme: http or https
+     * - api_key: The DaWanda API key
+     * - version: API version (currently only 1 is implemented)
+     *
+     * @param array|Collection $config Configuration data
+     *
+     * @return self
+     */
+    public static function factory($config = array())
+    {
+        $default = array(
+            'base_url' => 'https://{language}.dawanda.com/v{version}',
+            'language' => 'en',
+            'version'  => '1',
+            'api_key'   => null
+        );
+        $required = array('language', 'version', 'base_url', 'api_key');
+        $config = Collection::fromConfig($config, $default, $required);
+
+        $validLanguages = array('en', 'de', 'fr');
+        if (!in_array($config->get('language'), $validLanguages)) {
+            throw new InvalidArgumentException(
+                "Invalid language: Valid languages are 'de' (German), 'en' (English) and 'fr' (French), '{$config->get('language')}' given.");
+        }
+
+        if ((int) $config->get('version') !== 1) {
+            throw new InvalidArgumentException(
+                "Invalid version: currently only version '1' is implemented, '{$config->get('language')}' given.");
+        }
+
+        $client = new self($config->get('base_url'), $config);
+        // Attach a service description to the client
+        $client->setDescription(__DIR__ . '/DaWanda.json');
+        $client->addSubscriber(new DaWandaPlugin($config->get('api_key')));
+
+        return $client;
+    }
+}

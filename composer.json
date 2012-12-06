@@ -1,0 +1,26 @@
+{
+    "name": "tp/guzzle-dawanda",
+    "description": "A Guzzle implementation of the DaWanda API",
+    "homepage": "https://github.com/tPl0ch/guzzle-dawanda",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Thomas Ploch",
+            "email": "tp@responsive-code.de",
+            "role": "lead"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/tPl0ch/guzzle-dawanda/issues"
+    },
+    "require": {
+        "php": ">=5.3.3",
+        "guzzle/guzzle": ">=3.0.0"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    }
+}
