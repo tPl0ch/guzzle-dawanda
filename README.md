@@ -1,6 +1,8 @@
 Guzzle DaWanda API v1
 =====================
 
+[![Build Status](https://secure.travis-ci.org/tPl0ch/guzzle-dawanda.png?branch=master)](https://travis-ci.org/tPl0ch/guzzle-dawanda)
+
 A basic Guzzle implementation of the DaWanda API v1.
 This is only implementing the Basic API, I am currently working on extending it with more features and writing the OAuth Provider.
 
