@@ -175,7 +175,7 @@
             "uri": "categories/top",
             "summary": "Gets the Top Categories."
         },
-        "getCategoryDetails": {
+        "GetCategoryDetails": {
             "httpMethod": "GET",
             "uri": "categories/{id}",
             "summary": "Gets a Category's details.",
@@ -187,7 +187,7 @@
                 }
             }
         },
-        "getChildrenOfCategory": {
+        "GetChildrenOfCategory": {
             "extends": "pageableOperation",
             "httpMethod": "GET",
             "uri": "categories/{id}/children",
@@ -200,7 +200,7 @@
                 }
             }
         },
-        "getProductsForCategory": {
+        "GetProductsForCategory": {
             "extends": "pageableOperation",
             "httpMethod": "GET",
             "uri": "categories/{id}/products",
@@ -213,7 +213,7 @@
                 }
             }
         },
-        "getProductDetails": {
+        "GetProductDetails": {
             "httpMethod": "GET",
             "uri": "products/{id}",
             "summary": "Gets a Products's details.",
@@ -225,13 +225,13 @@
                 }
             }
         },
-        "getColors": {
+        "GetColors": {
             "extends": "pageableOperation",
             "httpMethod": "GET",
             "uri": "colors",
             "summary": "Gets available colors to search with."
         },
-        "getProductsForColor": {
+        "GetProductsForColor": {
             "extends": "pageableOperation",
             "httpMethod": "GET",
             "uri": "colors/{id}/products",
