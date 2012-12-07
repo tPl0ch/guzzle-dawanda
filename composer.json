@@ -17,6 +17,10 @@
         "php": ">=5.3.3",
         "guzzle/guzzle": ">=3.0.0"
     },
+    "require-dev": {
+        "php": ">=5.3.3",
+        "guzzle/guzzle": "dev-master"
+    },
     "minimum-stability": "dev",
     "autoload": {
         "classmap": [

@@ -13,9 +13,22 @@ Guzzle\Tests\GuzzleTestCase::setServiceBuilder(\Guzzle\Service\Builder\ServiceBu
             'api_key'  => $_SERVER['API_KEY']
         )
     ),
+    'test.dawanda.invalid.version' => array(
+        'class' => 'Guzzle\\Dawanda\\DaWandaClient',
+        'params' => array(
+            'version' => '30',
+            'api_key'  => $_SERVER['API_KEY']
+        )
+    ),
     'test.dawanda.no.key' => array(
         'class' => 'Guzzle\\Dawanda\\DaWandaClient',
         'params' => array()
+    ),
+    'test.dawanda.no.desc' => array(
+        'class' => 'Guzzle\\Dawanda\\DaWandaClient',
+        'params' => array(
+            'service' => 'nonexistant.php'
+        )
     ),
     'test.dawanda.de' => array(
         'class' => 'Guzzle\\Dawanda\\DaWandaClient',

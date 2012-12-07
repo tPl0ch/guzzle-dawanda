@@ -49,9 +49,10 @@ class DaWandaClient extends Client
             'base_url' => 'https://{language}.dawanda.com/v{version}',
             'language' => 'en',
             'version'  => '1',
-            'api_key'   => null
+            'api_key'  => null,
+            'service'  => __DIR__ . DIRECTORY_SEPARATOR . 'DaWanda.json'
         );
-        $required = array('language', 'version', 'base_url', 'api_key');
+        $required = array('language', 'version', 'base_url', 'api_key', 'service');
         $config = Collection::fromConfig($config, $default, $required);
 
         $validLanguages = array('en', 'de', 'fr');
@@ -66,12 +67,7 @@ class DaWandaClient extends Client
         }
 
         $client = new self($config->get('base_url'), $config);
-        // Attach a service description to the client
-        $description = __DIR__ . DIRECTORY_SEPARATOR . 'DaWanda.json';
-        if (!file_exists($description)) {
-            throw new RuntimeException("Couldn't find service description at '$description'");
-        }
-        $client->setDescription($description);
+        $client->setDescription($config->get('service'));
         $client->addSubscriber(new DaWandaPlugin($config->get('api_key')));
 
         return $client;

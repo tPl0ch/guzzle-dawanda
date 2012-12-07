@@ -16,22 +16,50 @@ use Guzzle\Tests\GuzzleTestCase;
 class DaWandaClientTest extends GuzzleTestCase
 {
     /**
-     * {@inheritDoc}
-     */
-    protected function setUp()
-    {
-        // (ﾉಥ益ಥ）ﾉ﻿ ┻━┻
-    }
-
-    /**
-     * Tests that invalid constructors throw right exceptions
+     * Tests api options missing throw right exception
      *
      * @expectedException PHPUnit_Framework_Error
      *
      * @return void
      */
-    public function testInvalidConstructors()
+    public function testInvalidNoKey()
     {
         $this->getServiceBuilder()->get('test.dawanda.no.key');
+    }
+
+    /**
+     * Tests invalid language throw right exception
+     *
+     * @expectedException Guzzle\Common\Exception\InvalidArgumentException
+     *
+     * @return void
+     */
+    public function testInvalidLang()
+    {
+        $this->getServiceBuilder()->get('test.dawanda.invalid.lang');
+    }
+
+    /**
+     * Tests no service description throw right exception
+     *
+     * @expectedException Guzzle\Service\Exception\ServiceNotFoundException
+     *
+     * @return void
+     */
+    public function testInvalidNoDescription()
+    {
+        $this->getServiceBuilder()->get('test.dawanda.no.description');
+    }
+
+    /**
+     * Tests no service description throw right exception
+     *
+     * @expectedException Guzzle\Common\Exception\InvalidArgumentException
+     *
+     * @return void
+     */
+    public function testInvalidVersion()
+    {
+        $this->getServiceBuilder()->get('test.dawanda.invalid.version');
     }
 }
