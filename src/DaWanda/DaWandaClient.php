@@ -35,7 +35,7 @@ class DaWandaClient extends Client
      *
      * The following array keys and values are available options:
      * - base_url: Base URL of web service
-     * - scheme:   URI scheme: http or https
+     * - language:   Language: 'de', 'en' or 'fr'
      * - api_key: The DaWanda API key
      * - version: API version (currently only 1 is implemented)
      *
