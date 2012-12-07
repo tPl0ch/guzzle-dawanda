@@ -78,7 +78,6 @@ class DaWandaClientTest extends GuzzleTestCase
     }
 
     /**
-     *
      * @group internet
      *
      * @return void
@@ -86,6 +85,7 @@ class DaWandaClientTest extends GuzzleTestCase
     public function testClient()
     {
         $this->client = $this->getServiceBuilder()->get('test.dawanda.de');
-        print_r($this->client->SearchUsers(array('keyword' => 'Liebe-und-Kraft')));
+        $result = $this->client->SearchUsers(array('keyword' => 'Liebe-und-Kraft'));
+        print_r($result);
     }
 }
