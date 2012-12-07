@@ -118,7 +118,7 @@
                 }
             }
         },
-        "getProductsForShop": {
+        "GetProductsForShop": {
             "extends": "pageableOperation",
             "httpMethod": "GET",
             "uri": "shops/{id}/products",
@@ -131,7 +131,7 @@
                 }
             }
         },
-        "getCategoriesForShop": {
+        "GetCategoriesForShop": {
             "extends": "pageableOperation",
             "httpMethod": "GET",
             "uri": "shops/{id}/shop_categories",
