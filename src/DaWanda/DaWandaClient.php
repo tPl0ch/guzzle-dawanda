@@ -74,19 +74,4 @@ class DaWandaClient extends Client
 
         return $client;
     }
-
-    /**
-     * @param $keyword
-     */
-    public function searchUsers($keyword)
-    {
-        $command = $this->getCommand('SearchUsers', array('keyword' => $keyword));
-        $command
-            ->prepare()
-            ->getQuery()
-            ->add('keyword', $keyword)
-        ;
-
-        return $command->execute();
-    }
 }

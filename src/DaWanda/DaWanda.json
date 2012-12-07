@@ -6,12 +6,206 @@
         "SearchUsers": {
             "httpMethod": "GET",
             "uri": "users/search",
-            "summary": "Searches the User base for a given username",
-            "responseClass": "SearchUsersOutput",
+            "summary": "Searches the User table for a given username",
             "parameters": {
                 "keyword": {
-                    "location": "uri",
+                    "location": "query",
                     "description": "Search keyword for user search.",
+                    "required": true
+                }
+            }
+        },
+        "SearchShops": {
+            "httpMethod": "GET",
+            "uri": "shops/search",
+            "summary": "Searches the Shop table for a given shop",
+            "parameters": {
+                "keyword": {
+                    "location": "query",
+                    "description": "Search keyword for shop search.",
+                    "required": true
+                }
+            }
+        },
+        "SearchProducts": {
+            "httpMethod": "GET",
+            "uri": "products/search",
+            "summary": "Searches the Product table for a given product",
+            "parameters": {
+                "keyword": {
+                    "location": "query",
+                    "description": "Search keyword for product search.",
+                    "required": true
+                }
+            }
+        },
+        "SearchProductsForColor": {
+            "httpMethod": "GET",
+            "uri": "colors/{color}/products/search",
+            "summary": "Searches the Product table for a given product with a specific color",
+            "parameters": {
+                "keyword": {
+                    "location": "query",
+                    "description": "Search keyword for product search with color attribute.",
+                    "required": true
+                },
+                "color": {
+                    "location": "uri",
+                    "description": "The color attribute to add to the search.",
+                    "required": true
+                }
+            }
+        },
+        "GetUserDetails": {
+            "httpMethod": "GET",
+            "uri": "users/{id}",
+            "summary": "Fetches a User's details.",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "The User id.",
+                    "required": true
+                }
+            }
+        },
+        "GetUserPinboards": {
+            "httpMethod": "GET",
+            "uri": "users/{id}/pinboards",
+            "summary": "Fetches a User's pinboards.",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "The User id.",
+                    "required": true
+                }
+            }
+        },
+        "GetShopDetails": {
+            "httpMethod": "GET",
+            "uri": "shops/{id}",
+            "summary": "Gets a Shop's details.",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "The Shop id.",
+                    "required": true
+                }
+            }
+        },
+        "getProductsForShop": {
+            "httpMethod": "GET",
+            "uri": "shops/{id}/products",
+            "summary": "Gets all products for a given Shop.",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "The Shop id.",
+                    "required": true
+                }
+            }
+        },
+        "getCategoriesForShop": {
+            "httpMethod": "GET",
+            "uri": "shops/{id}/shop_categories",
+            "summary": "Gets all shop categories for a given Shop.",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "The Shop id.",
+                    "required": true
+                }
+            }
+        },
+        "GetShopCategoryDetails": {
+            "httpMethod": "GET",
+            "uri": "shop_categories/{id}",
+            "summary": "Gets a ShopCategory's details.",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "The ShopCategory id.",
+                    "required": true
+                }
+            }
+        },
+        "GetProductsForShopCategory": {
+            "httpMethod": "GET",
+            "uri": "shop_categories/{id}/products",
+            "summary": "Gets all products for a given ShopCategory.",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "The ShopCategory id.",
+                    "required": true
+                }
+            }
+        },
+        "GetTopCategories": {
+            "httpMethod": "GET",
+            "uri": "categories/top",
+            "summary": "Gets the Top Categories."
+        },
+        "getCategoryDetails": {
+            "httpMethod": "GET",
+            "uri": "categories/{id}",
+            "summary": "Gets a Category's details.",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "The Category id.",
+                    "required": true
+                }
+            }
+        },
+        "getChildrenOfCategory": {
+            "httpMethod": "GET",
+            "uri": "categories/{id}/children",
+            "summary": "Gets a Category's children.",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "The Category id.",
+                    "required": true
+                }
+            }
+        },
+        "getProductsForCategory": {
+            "httpMethod": "GET",
+            "uri": "categories/{id}/products",
+            "summary": "Gets a Category's products.",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "The Category id.",
+                    "required": true
+                }
+            }
+        },
+        "getProductDetails": {
+            "httpMethod": "GET",
+            "uri": "products/{id}",
+            "summary": "Gets a Products's details.",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "The Product id.",
+                    "required": true
+                }
+            }
+        },
+        "getColors": {
+            "httpMethod": "GET",
+            "uri": "colors",
+            "summary": "Gets available colors to search with."
+        },
+        "getProductsForColor": {
+            "httpMethod": "GET",
+            "uri": "colors/{id}/products",
+            "summary": "Gets all Products associated with a given Color.",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "The Color id.",
                     "required": true
                 }
             }
