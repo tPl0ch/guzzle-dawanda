@@ -7,7 +7,6 @@
  * @licenese MIT
  *
  * @filesource
- *
  */
 namespace Guzzle\Dawanda;
 
