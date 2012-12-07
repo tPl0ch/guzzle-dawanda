@@ -13,6 +13,8 @@ use Guzzle\Tests\GuzzleTestCase;
 use Guzzle\Common\Event;
 use Guzzle\Http\QueryString;
 use Guzzle\Http\Message\Request;
+use Guzzle\Http\Client;
+use Guzzle\Common\Collection;
 
 use Guzzle\DaWanda\Plugin\DaWandaPlugin;
 
@@ -44,6 +46,16 @@ class DaWandaPluginTest extends GuzzleTestCase
     public $request;
 
     /**
+     * @var \PHPUnit_Framework_MockObject_MockObject
+     */
+    public $client;
+
+    /**
+     * @var \PHPUnit_Framework_MockObject_MockObject
+     */
+    public $collection;
+
+    /**
      * {@inheritDoc}
      */
     protected function setUp()
@@ -55,12 +67,13 @@ class DaWandaPluginTest extends GuzzleTestCase
         $this->event = $this
             ->getMockBuilder('Guzzle\Common\Event')
             ->setMethods(array('offsetGet'))
+            ->disableOriginalConstructor()
             ->getMock()
         ;
 
         $this->query = $this
             ->getMockBuilder('Guzzle\Http\QueryString')
-            ->setMethods(array('setParam'))
+            ->setMethods(array('set'))
             ->disableOriginalConstructor()
             ->getMock()
         ;
@@ -68,6 +81,20 @@ class DaWandaPluginTest extends GuzzleTestCase
         $this->request = $this
             ->getMockBuilder('Guzzle\Http\Message\Request')
             ->setMethods(array('getQuery'))
+            ->disableOriginalConstructor()
+            ->getMock()
+        ;
+
+        $this->client = $this
+            ->getMockBuilder('Guzzle\Http\Client')
+            ->disableOriginalConstructor()
+            ->setMethods(array('getConfig'))
+            ->getMock()
+        ;
+
+        $this->collection = $this
+            ->getMockBuilder('Guzzle\Common\Collection')
+            ->setMethods(array('get'))
             ->disableOriginalConstructor()
             ->getMock()
         ;
@@ -81,7 +108,8 @@ class DaWandaPluginTest extends GuzzleTestCase
     public function testEmittedEventName()
     {
         $expected = array(
-            'request.before_send' => 'onBeforeSend'
+            'request.before_send'   => 'onBeforeSend',
+            'client.create_request' => 'onRequestCreate'
         );
         $this->assertEquals($expected, DaWandaPlugin::getSubscribedEvents());
     }
@@ -118,8 +146,63 @@ class DaWandaPluginTest extends GuzzleTestCase
 
         $this->query
             ->expects($this->once())
-            ->method('setParam')
+            ->method('set')
             ->with('api_key', 'testkey')
         ;
+
+        $this->plugin->onBeforeSend($this->event);
+    }
+
+    /**
+     * Tests that onBeforeSend does the right thing with the Request object
+     *
+     * @return void
+     */
+    public function testOnRequestCreate()
+    {
+        $this->client->setConfig($this->collection);
+
+        $this->collection
+            ->expects($this->once())
+            ->method('get')
+            ->with('format')
+            ->will($this->returnValue('json'))
+        ;
+
+        $this->request
+            ->expects($this->once())
+            ->method('getQuery')
+            ->will($this->returnValue($this->query))
+        ;
+
+        $this->query
+            ->expects($this->once())
+            ->method('set')
+            ->with('format', 'json')
+        ;
+
+        $this->event
+            ->expects($this->at(0))
+            ->method('offsetGet')
+            ->with('client')
+            ->will($this->returnValue($this->client))
+        ;
+
+        $this->event
+            ->expects($this->at(1))
+            ->method('offsetGet')
+            ->with('request')
+            ->will($this->returnValue($this->request))
+        ;
+
+        $this->plugin->onRequestCreate($this->event);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    protected function tearDown()
+    {
+        unset($this->query, $this->request, $this->collection, $this->client, $this->event);
     }
 }

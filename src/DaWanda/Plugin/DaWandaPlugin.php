@@ -9,6 +9,7 @@
 namespace Guzzle\DaWanda\Plugin;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+
 use Guzzle\Common\Event;
 use Guzzle\Common\Collection;
 
@@ -27,7 +28,7 @@ class DaWandaPlugin implements EventSubscriberInterface
      */
     public function __construct($key)
     {
-        $this->key = $key;
+        $this->key = (string) $key;
     }
 
     /**
@@ -36,7 +37,8 @@ class DaWandaPlugin implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return array(
-            'request.before_send' => 'onBeforeSend'
+            'request.before_send'   => 'onBeforeSend',
+            'client.create_request' => 'onRequestCreate'
         );
     }
 
@@ -47,7 +49,23 @@ class DaWandaPlugin implements EventSubscriberInterface
     {
         $event['request']
             ->getQuery()
-            ->setParam('api_key', $this->key)
+            ->set('api_key', $this->key)
+        ;
+    }
+
+    /**
+     * @param \Guzzle\Common\Event $event
+     */
+    public function onRequestCreate(Event $event)
+    {
+        $format = $event['client']
+            ->getConfig()
+            ->get('format')
+        ;
+
+        $event['request']
+            ->getQuery()
+            ->set('format', $format)
         ;
     }
 }

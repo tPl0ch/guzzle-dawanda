@@ -9,6 +9,7 @@
 namespace Guzzle\DaWanda\Tests;
 
 use Guzzle\Tests\GuzzleTestCase;
+use Guzzle\Dawanda\DaWandaClient;
 
 /**
  * Client tests
@@ -16,9 +17,22 @@ use Guzzle\Tests\GuzzleTestCase;
 class DaWandaClientTest extends GuzzleTestCase
 {
     /**
+     * @var \Guzzle\Dawanda\DaWandaClient
+     */
+    public $client;
+
+    /**
+     * {@inheritDoc}
+     */
+    protected function setUp()
+    {
+        parent::setUp();
+    }
+
+    /**
      * Tests api options missing throw right exception
      *
-     * @expectedException PHPUnit_Framework_Error
+     * @expectedException Guzzle\Common\Exception\InvalidArgumentException
      *
      * @return void
      */
@@ -61,5 +75,17 @@ class DaWandaClientTest extends GuzzleTestCase
     public function testInvalidVersion()
     {
         $this->getServiceBuilder()->get('test.dawanda.invalid.version');
+    }
+
+    /**
+     *
+     * @group internet
+     *
+     * @return void
+     */
+    public function testClient()
+    {
+        $this->client = $this->getServiceBuilder()->get('test.dawanda.de');
+        $this->client->searchUsers('Liebe-und-Kraft');
     }
 }
