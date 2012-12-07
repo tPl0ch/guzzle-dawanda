@@ -76,4 +76,19 @@ class DaWandaClientTest extends GuzzleTestCase
     {
         $this->getServiceBuilder()->get('test.dawanda.invalid.version');
     }
+
+    /**
+     * Testing error handling for 404 request
+     *
+     * @expectedException Guzzle\Http\Exception\ClientErrorResponseException
+     *
+     * @return void
+     */
+    public function testErrorSearchUsers()
+    {
+        $this->client = $this->getServiceBuilder()->get('test.dawanda.de');
+        $this->setMockResponse($this->client, 'users.search.404.mock');
+
+        $this->client->SearchUsers(array('keyword' => 'test'));
+    }
 }
