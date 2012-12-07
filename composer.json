@@ -19,8 +19,7 @@
     },
     "require-dev": {
         "php": ">=5.3.3",
-        "guzzle/guzzle": "dev-master",
-        "phpunit/phpunit": "3.7.*"
+        "guzzle/guzzle": "dev-master"
     },
     "minimum-stability": "dev",
     "autoload": {

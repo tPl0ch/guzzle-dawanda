@@ -3,7 +3,28 @@
     "apiVersion": "v1",
     "description": "This is a description of the DaWanda API",
     "operations": {
+        "pageableOperation": {
+            "parameters": {
+                "per_page": {
+                    "location": "query",
+                    "description": "Results per page.",
+                    "type": "integer",
+                    "default": 10,
+                    "minimum": 10,
+                    "maximum": 100,
+                    "required": false
+                },
+                "page": {
+                    "location": "query",
+                    "description": "Page to fetch",
+                    "type": "integer",
+                    "required": false,
+                    "default": 1
+                }
+            }
+        },
         "SearchUsers": {
+            "extends": "pageableOperation",
             "httpMethod": "GET",
             "uri": "users/search",
             "summary": "Searches the User table for a given username",
@@ -17,6 +38,7 @@
             }
         },
         "SearchShops": {
+            "extends": "pageableOperation",
             "httpMethod": "GET",
             "uri": "shops/search",
             "summary": "Searches the Shop table for a given shop",
@@ -29,6 +51,7 @@
             }
         },
         "SearchProducts": {
+            "extends": "pageableOperation",
             "httpMethod": "GET",
             "uri": "products/search",
             "summary": "Searches the Product table for a given product",
@@ -41,6 +64,7 @@
             }
         },
         "SearchProductsForColor": {
+            "extends": "pageableOperation",
             "httpMethod": "GET",
             "uri": "colors/{color}/products/search",
             "summary": "Searches the Product table for a given product with a specific color",
@@ -70,6 +94,7 @@
             }
         },
         "GetUserPinboards": {
+            "extends": "pageableOperation",
             "httpMethod": "GET",
             "uri": "users/{id}/pinboards",
             "summary": "Fetches a User's pinboards.",
@@ -94,6 +119,7 @@
             }
         },
         "getProductsForShop": {
+            "extends": "pageableOperation",
             "httpMethod": "GET",
             "uri": "shops/{id}/products",
             "summary": "Gets all products for a given Shop.",
@@ -106,6 +132,7 @@
             }
         },
         "getCategoriesForShop": {
+            "extends": "pageableOperation",
             "httpMethod": "GET",
             "uri": "shops/{id}/shop_categories",
             "summary": "Gets all shop categories for a given Shop.",
@@ -130,6 +157,7 @@
             }
         },
         "GetProductsForShopCategory": {
+            "extends": "pageableOperation",
             "httpMethod": "GET",
             "uri": "shop_categories/{id}/products",
             "summary": "Gets all products for a given ShopCategory.",
@@ -142,6 +170,7 @@
             }
         },
         "GetTopCategories": {
+            "extends": "pageableOperation",
             "httpMethod": "GET",
             "uri": "categories/top",
             "summary": "Gets the Top Categories."
@@ -159,6 +188,7 @@
             }
         },
         "getChildrenOfCategory": {
+            "extends": "pageableOperation",
             "httpMethod": "GET",
             "uri": "categories/{id}/children",
             "summary": "Gets a Category's children.",
@@ -171,6 +201,7 @@
             }
         },
         "getProductsForCategory": {
+            "extends": "pageableOperation",
             "httpMethod": "GET",
             "uri": "categories/{id}/products",
             "summary": "Gets a Category's products.",
@@ -195,11 +226,13 @@
             }
         },
         "getColors": {
+            "extends": "pageableOperation",
             "httpMethod": "GET",
             "uri": "colors",
             "summary": "Gets available colors to search with."
         },
         "getProductsForColor": {
+            "extends": "pageableOperation",
             "httpMethod": "GET",
             "uri": "colors/{id}/products",
             "summary": "Gets all Products associated with a given Color.",

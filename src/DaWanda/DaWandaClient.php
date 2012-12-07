@@ -36,9 +36,10 @@ class DaWandaClient extends Client
      *
      * The following array keys and values are available options:
      * - base_url: Base URL of web service
-     * - language:   Language: 'de', 'en' or 'fr'
-     * - api_key: The DaWanda API key
-     * - version: API version (currently only 1 is implemented)
+     * - language: Language: 'de', 'en' or 'fr'
+     * - api_key:  The DaWanda API key REQUIRED
+     * - version:  API version (currently only 1 is implemented)
+     * - service:  The path to the service description
      *
      * @param array|Collection $config Configuration data
      *

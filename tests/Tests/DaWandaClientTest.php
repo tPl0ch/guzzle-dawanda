@@ -76,16 +76,4 @@ class DaWandaClientTest extends GuzzleTestCase
     {
         $this->getServiceBuilder()->get('test.dawanda.invalid.version');
     }
-
-    /**
-     * @group internet
-     *
-     * @return void
-     */
-    public function testClient()
-    {
-        $this->client = $this->getServiceBuilder()->get('test.dawanda.de');
-        $result = $this->client->SearchUsers(array('keyword' => 'Liebe-und-Kraft'));
-        print_r($result);
-    }
 }
