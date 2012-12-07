@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="./test/bootstrap.php" colors="true">
+    <php>
+        <!-- Specify the path to a service configuration file -->
+        <server name="CONFIG" value="DaWanda.json" />
+        <!-- Or, specify each require parameter individually -->
+        <server name="API_KEY" value="****" />
+    </php>
+    <testsuites>
+        <testsuite name="guzzle-service">
+            <directory suffix="Test.php">./test/Tests</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

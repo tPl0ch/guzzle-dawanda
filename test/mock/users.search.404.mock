@@ -1,0 +1,15 @@
+HTTP/1.1 404 Not Found
+Server: nginx/1.2.3
+Date: Fri, 07 Dec 2012 05:28:12 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 85
+Connection: close
+Status: 404
+X-Powered-By: Phusion Passenger (mod_rails/mod_rack) 3.0.11
+Cache-Control: no-cache
+delivered_by: appserver55
+X-Runtime: 23
+Set-Cookie: partner=dawanda_de; domain=.dawanda.com; path=/; expires=Sat, 07-Dec-2013 05:28:12 GMT
+Set-Cookie: _dawanda_session=0db5b17818bb3875993c9010c8fecea8; domain=.dawanda.com; path=/; HttpOnly
+
+{"error":{"status":404,"message":"No user with __INVALID__ could be found."}}

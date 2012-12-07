@@ -14,7 +14,10 @@ namespace Guzzle\Dawanda;
 use Guzzle\Common\Event;
 use Guzzle\Common\Collection;
 use Guzzle\Service\Client;
+
 use Guzzle\Common\Exception\InvalidArgumentException;
+use Guzzle\Common\Exception\RuntimeException;
+
 use Guzzle\Http\Message\Request;
 
 use Guzzle\DaWanda\Plugin\DaWandaPlugin;
@@ -64,7 +67,11 @@ class DaWandaClient extends Client
 
         $client = new self($config->get('base_url'), $config);
         // Attach a service description to the client
-        $client->setDescription(__DIR__ . '/DaWanda.json');
+        $description = __DIR__ . DIRECTORY_SEPARATOR . 'DaWanda.json';
+        if (!file_exists($description)) {
+            throw new RuntimeException("Couldn't find service description at '$description'");
+        }
+        $client->setDescription($description);
         $client->addSubscriber(new DaWandaPlugin($config->get('api_key')));
 
         return $client;

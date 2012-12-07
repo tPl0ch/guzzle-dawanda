@@ -1,0 +1,16 @@
+HTTP/1.1 200 OK
+Server: nginx/1.2.3
+Date: Fri, 07 Dec 2012 05:30:40 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 729
+Connection: close
+Status: 200
+X-Powered-By: Phusion Passenger (mod_rails/mod_rack) 3.0.11
+Cache-Control: private, max-age=0, must-revalidate
+delivered_by: appserver55
+ETag: "185aec3272f73d5e8c496ad1656adbac"
+X-Runtime: 43
+Set-Cookie: partner=dawanda_de; domain=.dawanda.com; path=/; expires=Sat, 07-Dec-2013 05:30:40 GMT
+Set-Cookie: _dawanda_session=0db5b17818bb3875993c9010c8fecea8; domain=.dawanda.com; path=/; HttpOnly
+
+{"response":{"type":"user","result":{"users":[{"city":"Mannheim","restful_path":"/users/993054","shop":{"restful_path":"/shops/993054","id":452701,"subdomain":"Liebe-und-Kraft"},"id":993054,"sex":"female","name":"Liebe-und-Kraft","is_seller":true,"images":[{"image_40x40":"http://s32.dawandastatic.com/User/993/993054/mini_avatar/1352482441-98.jpg","image_80x80":"http://s32.dawandastatic.com/User/993/993054/avatar/1352482441-98.jpg","image_170x":"http://s32.dawandastatic.com/User/993/993054/full/1352482441-98.jpg"}],"transaction_sold_count":431,"bio":"http://www.facebook.com/LiebeUndKraft"}]},"pages":1,"entries":1,"params":{"keyword":"Liebe-und-Kraft","api_key":"b643203dd43076dcdfd37420c6c832b520a4d2b1","format":"json"}}}
