@@ -81,6 +81,7 @@ class DaWandaClientTest extends GuzzleTestCase
      * Testing error handling for 404 request
      *
      * @expectedException Guzzle\Http\Exception\ClientErrorResponseException
+     * @expectedExceptionMessage "No user with __INVALID__ could be found."
      *
      * @return void
      */

@@ -37,8 +37,7 @@ class DaWandaPlugin implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return array(
-            'request.before_send'   => 'onBeforeSend',
-            'client.create_request' => 'onRequestCreate'
+            'request.before_send'   => 'onBeforeSend'
         );
     }
 
@@ -50,22 +49,6 @@ class DaWandaPlugin implements EventSubscriberInterface
         $event['request']
             ->getQuery()
             ->set('api_key', $this->key)
-        ;
-    }
-
-    /**
-     * @param \Guzzle\Common\Event $event
-     */
-    public function onRequestCreate(Event $event)
-    {
-        $format = $event['client']
-            ->getConfig()
-            ->get('format')
-        ;
-
-        $event['request']
-            ->getQuery()
-            ->set('format', $format)
         ;
     }
 }

@@ -84,20 +84,6 @@ class DaWandaPluginTest extends GuzzleTestCase
             ->disableOriginalConstructor()
             ->getMock()
         ;
-
-        $this->client = $this
-            ->getMockBuilder('Guzzle\Http\Client')
-            ->disableOriginalConstructor()
-            ->setMethods(array('getConfig'))
-            ->getMock()
-        ;
-
-        $this->collection = $this
-            ->getMockBuilder('Guzzle\Common\Collection')
-            ->setMethods(array('get'))
-            ->disableOriginalConstructor()
-            ->getMock()
-        ;
     }
 
     /**
@@ -108,8 +94,7 @@ class DaWandaPluginTest extends GuzzleTestCase
     public function testEmittedEventName()
     {
         $expected = array(
-            'request.before_send'   => 'onBeforeSend',
-            'client.create_request' => 'onRequestCreate'
+            'request.before_send'   => 'onBeforeSend'
         );
         $this->assertEquals($expected, DaWandaPlugin::getSubscribedEvents());
     }
@@ -151,58 +136,5 @@ class DaWandaPluginTest extends GuzzleTestCase
         ;
 
         $this->plugin->onBeforeSend($this->event);
-    }
-
-    /**
-     * Tests that onBeforeSend does the right thing with the Request object
-     *
-     * @return void
-     */
-    public function testOnRequestCreate()
-    {
-        $this->client->setConfig($this->collection);
-
-        $this->collection
-            ->expects($this->once())
-            ->method('get')
-            ->with('format')
-            ->will($this->returnValue('json'))
-        ;
-
-        $this->request
-            ->expects($this->once())
-            ->method('getQuery')
-            ->will($this->returnValue($this->query))
-        ;
-
-        $this->query
-            ->expects($this->once())
-            ->method('set')
-            ->with('format', 'json')
-        ;
-
-        $this->event
-            ->expects($this->at(0))
-            ->method('offsetGet')
-            ->with('client')
-            ->will($this->returnValue($this->client))
-        ;
-
-        $this->event
-            ->expects($this->at(1))
-            ->method('offsetGet')
-            ->with('request')
-            ->will($this->returnValue($this->request))
-        ;
-
-        $this->plugin->onRequestCreate($this->event);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    protected function tearDown()
-    {
-        unset($this->query, $this->request, $this->collection, $this->client, $this->event);
     }
 }
