@@ -21,10 +21,9 @@
         "php": ">=5.3.3",
         "guzzle/guzzle": "dev-master"
     },
+    "target-dir": "Guzzle",
     "minimum-stability": "dev",
     "autoload": {
-        "classmap": [
-            "src/"
-        ]
+        "psr-0": {"Guzzle": "/src"}
     }
 }
