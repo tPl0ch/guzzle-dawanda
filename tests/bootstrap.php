@@ -8,44 +8,44 @@ Guzzle\Tests\GuzzleTestCase::setMockBasePath(__DIR__ . DIRECTORY_SEPARATOR . 'mo
 // Register services with the GuzzleTestCase
 Guzzle\Tests\GuzzleTestCase::setServiceBuilder(\Guzzle\Service\Builder\ServiceBuilder::factory(array(
     'test.dawanda.invalid.lang' => array(
-        'class' => 'Dawanda\\DaWandaClient',
+        'class' => 'DaWanda\\DaWandaClient',
         'params' => array(
             'language' => 'foooo',
             'api_key'  => $_SERVER['API_KEY']
         )
     ),
     'test.dawanda.invalid.version' => array(
-        'class' => 'Dawanda\\DaWandaClient',
+        'class' => 'DaWanda\\DaWandaClient',
         'params' => array(
             'version' => '30',
             'api_key'  => $_SERVER['API_KEY']
         )
     ),
     'test.dawanda.no.key' => array(
-        'class' => 'Dawanda\\DaWandaClient',
+        'class' => 'DaWanda\\DaWandaClient',
         'params' => array()
     ),
     'test.dawanda.no.desc' => array(
-        'class' => 'Dawanda\\DaWandaClient',
+        'class' => 'DaWanda\\DaWandaClient',
         'params' => array(
             'service' => 'nonexistant.php'
         )
     ),
     'test.dawanda.de' => array(
-        'class' => 'Dawanda\\DaWandaClient',
+        'class' => 'DaWanda\\DaWandaClient',
         'params' => array(
             'language' => 'de',
             'api_key'  => $_SERVER['API_KEY']
         )
     ),
     'test.dawanda.en' => array(
-        'class' => 'Dawanda\\DaWandaClient',
+        'class' => 'DaWanda\\DaWandaClient',
         'params' => array(
             'api_key'  => $_SERVER['API_KEY']
         )
     ),
     'test.dawanda.fr' => array(
-        'class' => 'Dawanda\\DaWandaClient',
+        'class' => 'DaWanda\\DaWandaClient',
         'params' => array(
             'language' => 'fr',
             'api_key'  => $_SERVER['API_KEY']
