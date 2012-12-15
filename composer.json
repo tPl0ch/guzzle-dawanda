@@ -24,8 +24,7 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-0": {
-            "Guzzle\\DaWanda": "src",
-            "Guzzle\\DaWanda\\Tests": "tests"
+            "Guzzle\\DaWanda": "src/DaWanda/"
         }
     }
 }
