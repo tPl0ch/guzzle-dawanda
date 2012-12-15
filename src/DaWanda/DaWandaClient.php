@@ -8,19 +8,17 @@
  *
  * @filesource
  */
-namespace Guzzle\Dawanda;
+namespace DaWanda;
 
-use Guzzle\Common\Event;
 use Guzzle\Common\Collection;
 use Guzzle\Common\Exception\InvalidArgumentException;
-use Guzzle\Common\Exception\RuntimeException;
 
 use Guzzle\Service\Description\ServiceDescription;
 use Guzzle\Service\Client;
 
 use Guzzle\Http\Message\Request;
 
-use Guzzle\DaWanda\Plugin\DaWandaPlugin;
+use DaWanda\Plugin\DaWandaPlugin;
 
 /**
  * The DaWanda API Client

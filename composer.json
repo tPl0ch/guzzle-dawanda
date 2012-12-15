@@ -23,8 +23,6 @@
     },
     "minimum-stability": "dev",
     "autoload": {
-        "psr-0": {
-            "Guzzle\\DaWanda": "src/DaWanda/"
-        }
+        "classmap": ["src/"]
     }
 }

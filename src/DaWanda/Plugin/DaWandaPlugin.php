@@ -6,7 +6,7 @@
  * @since  06.12.12 23:38
  * @filesource
  */
-namespace Guzzle\DaWanda\Plugin;
+namespace DaWanda\Plugin;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 

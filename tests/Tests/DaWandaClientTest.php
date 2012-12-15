@@ -6,10 +6,10 @@
  * @since  07.12.12 06:02
  * @filesource
  */
-namespace Guzzle\DaWanda\Tests;
+namespace DaWanda\Tests;
 
 use Guzzle\Tests\GuzzleTestCase;
-use Guzzle\Dawanda\DaWandaClient;
+use Dawanda\DaWandaClient;
 
 /**
  * Client tests
@@ -17,7 +17,7 @@ use Guzzle\Dawanda\DaWandaClient;
 class DaWandaClientTest extends GuzzleTestCase
 {
     /**
-     * @var \Guzzle\Dawanda\DaWandaClient
+     * @var \Dawanda\DaWandaClient
      */
     public $client;
 
@@ -32,7 +32,7 @@ class DaWandaClientTest extends GuzzleTestCase
     /**
      * Tests api options missing throw right exception
      *
-     * @expectedException Guzzle\Common\Exception\InvalidArgumentException
+     * @expectedException \Guzzle\Common\Exception\InvalidArgumentException
      *
      * @return void
      */
@@ -44,7 +44,7 @@ class DaWandaClientTest extends GuzzleTestCase
     /**
      * Tests invalid language throw right exception
      *
-     * @expectedException Guzzle\Common\Exception\InvalidArgumentException
+     * @expectedException \Guzzle\Common\Exception\InvalidArgumentException
      *
      * @return void
      */
@@ -56,7 +56,7 @@ class DaWandaClientTest extends GuzzleTestCase
     /**
      * Tests no service description throw right exception
      *
-     * @expectedException Guzzle\Service\Exception\ServiceNotFoundException
+     * @expectedException \Guzzle\Service\Exception\ServiceNotFoundException
      *
      * @return void
      */
@@ -68,7 +68,7 @@ class DaWandaClientTest extends GuzzleTestCase
     /**
      * Tests no service description throw right exception
      *
-     * @expectedException Guzzle\Common\Exception\InvalidArgumentException
+     * @expectedException \Guzzle\Common\Exception\InvalidArgumentException
      *
      * @return void
      */
@@ -80,7 +80,7 @@ class DaWandaClientTest extends GuzzleTestCase
     /**
      * Testing error handling for 404 request
      *
-     * @expectedException Guzzle\Http\Exception\ClientErrorResponseException
+     * @expectedException \Guzzle\Http\Exception\ClientErrorResponseException
      * @expectedExceptionMessage "No user with __INVALID__ could be found."
      *
      * @return void

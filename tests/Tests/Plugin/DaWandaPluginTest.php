@@ -6,17 +6,16 @@
  * @since  07.12.12 07:14
  * @filesource
  */
-namespace Guzzle\DaWanda\Tests\Plugin;
+namespace DaWanda\Tests\Plugin;
 
 use Guzzle\Tests\GuzzleTestCase;
 
-use Guzzle\Common\Event;
 use Guzzle\Http\QueryString;
 use Guzzle\Http\Message\Request;
 use Guzzle\Http\Client;
 use Guzzle\Common\Collection;
 
-use Guzzle\DaWanda\Plugin\DaWandaPlugin;
+use DaWanda\Plugin\DaWandaPlugin;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
@@ -26,7 +25,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 class DaWandaPluginTest extends GuzzleTestCase
 {
     /**
-     * @var \Guzzle\DaWanda\Plugin\DaWandaPlugin
+     * @var \DaWanda\Plugin\DaWandaPlugin
      */
     public $plugin;
 
